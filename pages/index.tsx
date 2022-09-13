@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { NextPage } from "next";
+import Link from "next/link";
 import Button from "@mui/material/Button";
 import { MyTable } from "../components/MyTable";
 import { MyAlert } from "../components/MyAlert";
@@ -59,6 +60,13 @@ const Home: NextPage = () => {
 
   return (
     <div className="w-[1000px] ml-5  mt-10 ">
+      <div className="navbar bg-base-100">
+        <Link href="/reserve">
+          <a className="link link-primary normal-case text-xl">
+            Reservation Menu
+          </a>
+        </Link>
+      </div>
       <MyAlert
         className="w-[600px] mb-12 justify-center"
         message="firebase and grid table"

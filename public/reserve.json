@@ -1,0 +1,21 @@
+[
+  {
+    "ymd": "20220912",
+    "staffNo": 1,
+    "reservableTime": 90,
+    "reserveArray": [
+      {
+        "clientName": "Yasumasa",
+        "menu": "Cut",
+        "startTime": "11:00",
+        "endTime": "12:30"
+      },
+      {
+        "clientName": "AKO",
+        "menu": "Cut",
+        "startTime": "13:00",
+        "endTime": "14:00"
+      }
+    ]
+  }
+]

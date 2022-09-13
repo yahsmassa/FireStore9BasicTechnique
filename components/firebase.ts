@@ -13,6 +13,7 @@ import {
 
 import type {
   Query,
+  DocumentReference,
   DocumentData,
   QueryDocumentSnapshot,
 } from "firebase/firestore";
@@ -27,7 +28,7 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
-const db = getFirestore();
+export const db = getFirestore();
 
 // This interface is made by Web Service
 // https://app.quicktype.io/

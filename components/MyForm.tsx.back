@@ -1,0 +1,116 @@
+import Swal from "sweetalert2";
+
+import {
+  Reserve,
+  StaffReserve,
+  FormReserve,
+  addReserve,
+} from "./firebaseAdvance";
+
+import { ChangeEvent, SyntheticEvent } from "react";
+import { useForm } from "./useForm";
+
+export const MyForm = () => {
+  const { values, handleInputChange, reset, setEditValues } =
+    useForm<FormReserve>({
+      ymd: "",
+      staffNo: 1,
+      clientName: "",
+      menu: "",
+      startTime: "",
+      endTime: "",
+    });
+
+  const { ymd, staffNo, startTime, endTime, clientName, menu } = values;
+
+  const handleSubmit = async (e: SyntheticEvent) => {
+    e.preventDefault();
+    addReserve(ymd, staffNo, clientName, menu, startTime, endTime);
+    reset();
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="mt-10 ">
+      <div className="w-[900px] pl-4 shadow-lg pb-5">
+        <div className="flex flex-row mb-3 justify-between">
+          <div className="text-2xl ">Reservation</div>
+          <button className="btn btn-outline mr-10" type="submit">
+            Reserve
+          </button>
+        </div>
+        <div className="mr-2">
+          <select
+            className="select select-bordered w-[140px] mr-2"
+            onChange={({ target }) => handleInputChange(target.value, "ymd")}
+          >
+            <option disabled selected>
+              Date
+            </option>
+            <option>20220913</option>
+            <option>20220914</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Clinet Name"
+            className="input input-bordered w-[180px] mr-2"
+            onBlur={({ target }) =>
+              handleInputChange(target.value, "clientName")
+            }
+          />
+          <select
+            className="select select-bordered w-[120px]  mr-2"
+            onChange={({ target }) =>
+              handleInputChange(target.value, "staffNo")
+            }
+          >
+            <option disabled selected>
+              StaffNo
+            </option>
+            <option>1</option>
+            <option>2</option>
+          </select>
+          <select
+            className="select select-bordered w-[120px]  mr-2"
+            onChange={({ target }) => handleInputChange(target.value, "menu")}
+          >
+            <option disabled selected>
+              Menu
+            </option>
+            <option>CUT</option>
+            <option>PERM</option>
+            <option>Color</option>
+          </select>
+          <select
+            className="select select-bordered w-[120px]  mr-2"
+            onChange={({ target }) =>
+              handleInputChange(target.value, "startTime")
+            }
+          >
+            <option disabled selected>
+              Start
+            </option>
+            <option>09:00</option>
+            <option>10:00</option>
+            <option>11:00</option>
+            <option>12:00</option>
+          </select>
+          <select
+            className="select select-bordered w-[120px]  mr-2"
+            onChange={({ target }) =>
+              handleInputChange(target.value, "endTime")
+            }
+          >
+            <option disabled selected>
+              End
+            </option>
+            <option>12:00</option>
+            <option>13:00</option>
+            <option>14:00</option>
+            <option>15:00</option>
+            <option>16:00</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  );
+};
